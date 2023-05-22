@@ -13,7 +13,7 @@ Copy the contents of file [InMemoryStorageAdapter.js](./src/InMemoryStorageAdapt
 Then, create your GunDB instance with the following options:
 
 ```
-  const Gun = GUN(GUN({ localStorage:false, inMemory:true }))
+  const Gun = GUN({ localStorage:false, inMemory:true })
 ```
 
 From now on, work with your instance as usual - you should not recognize any difference except that GunDB will run much faster now.
