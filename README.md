@@ -1,4 +1,4 @@
-# gundb-inmemory-storage-adapter #
+# gundb-in-memory-storage-adapter #
 
 a trivial in-memory storage adapter for GunDB
 
