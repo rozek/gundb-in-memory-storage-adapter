@@ -25,6 +25,8 @@ Then, create your GunDB instance with the following options:
 
 From now on, work with your instance as usual - you should not recognize any difference except that GunDB will run much faster now.
 
+However, please be aware that the `InMemoryStorageAdapter` does not persist your data anywhere - all your GunDB contents will be lost as soon as you close your browser tab or window or reload the web page with your GunDB application. The `InMemoryStorageAdapter` is solely intended for experiments and tests.
+
 ## License ##
 
 [MIT License](LICENSE.md)
