@@ -10,6 +10,13 @@ a trivial in-memory storage adapter for GunDB
 
 Copy the contents of file [InMemoryStorageAdapter.js](./src/InMemoryStorageAdapter.js) into a `<script>` element and add it to the `<head>` section of your HTML document right after the one for GunDB itself.
 
+```
+<script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+<script>
+  ... insert source code here
+</script>
+```
+
 Then, create your GunDB instance with the following options:
 
 ```
