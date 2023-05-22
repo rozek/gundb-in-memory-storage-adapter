@@ -17,7 +17,7 @@ Copy the contents of file [InMemoryStorageAdapter.js](./src/InMemoryStorageAdapt
 </script>
 ```
 
-Then, create your GunDB instance with the following options:
+Then, create your GunDB instance with the following options (among others, if need be):
 
 ```
   const Gun = GUN({ localStorage:false, inMemory:true })
