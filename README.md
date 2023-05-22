@@ -4,7 +4,7 @@ a trivial in-memory storage adapter for GunDB
 
 [GunDB](https://github.com/amark/gun)'s built-in storage adapters based on [RAD](https://github.com/amark/gun/wiki/RAD) are completely broken (RAD [will soon be replaced by something else](https://github.com/amark/gun/issues/1329#issuecomment-1556079655)). Until then, this storage adapter may be used, e.g., for testing and debugging purposes.
 
-> **Important**: this adapter is not yet finished, particularly its documentation still has to be written. The plan is to finish everything by en of june 2023
+> **Important**: this adapter is not yet finished and its documentation still has to be written. The plan is to finish everything by end of June, 2023
 
 ## Usage ##
 
