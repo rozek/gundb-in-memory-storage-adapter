@@ -2,7 +2,9 @@
 
 a trivial in-memory storage adapter for GunDB
 
-[GunDB](https://github.com/amark/gun)'s built-in storage adapters based on [RAD](https://github.com/amark/gun/wiki/RAD) are completely broken (RAD [will soon be replaced by something else](https://github.com/amark/gun/issues/1329#issuecomment-1556079655)). Until then, this storage adapter may be used, e.g., for testing and debugging purposes.
+[GunDB](https://github.com/amark/gun)'s built-in storage adapters based on [RAD](https://github.com/amark/gun/wiki/RAD) are completely broken (RAD [will soon be replaced by something else](https://github.com/amark/gun/issues/1329#issuecomment-1556079655)). Until then, this adapter may be used instead, e.g., for testing and debugging purposes.
+
+In addition to the typical functionality of a GunDB storage adapter, this one also demonstrates "id filtering", a concept which lets the adapter only persist nodes which belong to a given "containment tree" and ignore any others. This functionality becomes important in really globally distributed sysems as it prevents a storage adapter from persisting foreign nodes.
 
 Please be aware that this storage adapter does not really persist your nodes - all contents get lost as soon as you reload your web page or close its tab or window. If you want your data to survive these situations, you may use the [direct localStorage](https://github.com/rozek/gundb-direct-localstorage-adapter) or, even better, the [direct localForage](https://github.com/rozek/gundb-direct-localforage-adapter) adapter instead.
 
@@ -19,6 +21,8 @@ Copy the contents of file [InMemoryStorageAdapter.js](./src/InMemoryStorageAdapt
 </script>
 ```
 
+### Non-filtering Mode ###
+
 Then, create your GunDB instance with the following options (among others, if need be):
 
 ```
@@ -27,7 +31,28 @@ Then, create your GunDB instance with the following options (among others, if ne
 
 From now on, work with your instance as usual - you should not recognize any difference except that GunDB will run much faster now.
 
-However, please be aware that the `InMemoryStorageAdapter` does not persist your data anywhere - all your GunDB contents will be lost as soon as you close your browser tab or window or reload the web page with your GunDB application. The `InMemoryStorageAdapter` is solely intended for experiments and tests.
+### Filtering Mode ###
+
+If you want to restrict persisting to only nodes that belong to one or multiple "containment trees" (i.e., node with ids that start with a given prefix) you may configure the storage adapter with one or multiple id prefixes.
+
+Depending on whether such a prefix ends with a slash (`/`), the "root" of such a containment subtree will also be persisted or not:
+
+* `'a/b/c'` will persist both the node `'a/b/c'` and all inner ones `'a/b/c/...'` whereas
+* `'a/b/c/'` will persist the inner nodes `'a/b/c/...'`
+
+If you need a single node id prefix only, you may specify that string directly
+
+```
+  const Gun = GUN({ localStorage:false, inMemory:'a/b/c/' })
+```
+
+Otherwise specify an array containing all desired prefixes:
+
+```
+  const Gun = GUN({ localStorage:false, inMemory:['a/b/c/','1/2/3'] })
+```
+
+In any case, however, please be aware that the `InMemoryStorageAdapter` does not persist your data anywhere - all your GunDB contents will be lost as soon as you close your browser tab or window or reload the web page with your GunDB application. The `InMemoryStorageAdapter` is solely intended for experiments and tests.
 
 ## License ##
 
