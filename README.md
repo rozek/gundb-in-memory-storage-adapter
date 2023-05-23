@@ -33,14 +33,14 @@ From now on, work with your instance as usual - you should not recognize any dif
 
 ### Filtering Mode ###
 
-If you want to restrict persisting to only nodes that belong to one or multiple "containment trees" (i.e., node with ids that start with a given prefix) you may configure the storage adapter with one or multiple id prefixes.
+If you want to restrict persisting to only nodes that belong to one or multiple "containment trees" (i.e., nodes with ids that start with a given prefix) you may configure the storage adapter with one or multiple id prefixes.
 
 Depending on whether such a prefix ends with a slash (`/`), the "root" of such a containment subtree will also be persisted or not:
 
-* `'a/b/c'` will persist both the node `'a/b/c'` and all inner ones `'a/b/c/...'` whereas
-* `'a/b/c/'` will persist the inner nodes `'a/b/c/...'`
+* `'a/b/c'` will persist both the node `'a/b/c'` and all inner ones `'a/b/c/...'`, whereas
+* `'a/b/c/'` will persist the inner nodes `'a/b/c/...'` only
 
-If you need a single node id prefix only, you may specify that string directly
+If you need a single filtering prefix only, you may specify that string directly
 
 ```
   const Gun = GUN({ localStorage:false, inMemory:'a/b/c/' })
