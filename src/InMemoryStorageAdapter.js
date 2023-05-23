@@ -12,8 +12,9 @@
     Context.on('get', function (WireMessage) {           // no "fat arrow" here!
       this.to.next(WireMessage)
 
-      let LEX  = WireMessage.get
-      let Soul = (LEX == null ? undefined : LEX['#'])
+      let DedupId = WireMessage['#']
+      let LEX     = WireMessage.get
+      let Soul    = (LEX == null ? undefined : LEX['#'])
       if (Soul == null) { return }
 
       let Data = InMemoryStorage[Soul]              // fetches data from storage
@@ -26,7 +27,7 @@
         }
       }
 
-      GUN.on.get.ack(WireMessage,Data)
+      Context.on('in', { '@':DedupId, ok:1, err:null, put:Data })
     })
 
   /**** put - patches the contents of a given node ****/
@@ -44,7 +45,7 @@
       )
 
       Context.on('in', {                           // acknowledge put completion
-        '@':DedupId, err:undefined, ok:1
+        '@':DedupId, err:undefined, ok:true
       })
     })
   })
