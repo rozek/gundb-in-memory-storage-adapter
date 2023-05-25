@@ -8,7 +8,7 @@ In addition to the typical functionality of a GunDB storage adapter, this one al
 
 Please be aware that this storage adapter does not really persist your nodes - all contents get lost as soon as you reload your web page or close its tab or window. If you want your data to survive these situations, you may use the [direct localStorage](https://github.com/rozek/gundb-direct-localstorage-adapter) or, even better, the [direct localForage](https://github.com/rozek/gundb-direct-localforage-adapter) adapter instead.
 
-> **Important**: this adapter is not yet finished and its documentation still has to be written. The plan is to finish everything by end of June, 2023
+> **Important: after two weeks of intensive work and no substantial outcome, I have decided to give up on GunDB - it is full of bugs and - even worse - race conditions and the implementation looks like being hacked in a style used 40 years ago (when source code had to be compact and variable names short in order to fit into the memory) **
 
 ## Usage ##
 
